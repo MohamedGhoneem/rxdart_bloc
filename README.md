@@ -19,19 +19,21 @@ Why rxdart_bloc ?
 If you are working on a complex project you might be challenged to build a highly interactive UI or a heavy business logic in a combination with the consumption of various data sources such as REST APIs, Web Socket, Secured Storage, Shared Preferences, etc. To achieve this, you might need a sophisticated architecture that facilitates your work during product development.
 
 
-## Features
 
 ![](../Screenshot_20230731_093756.png)
 
-List what your package can do. Maybe include images, gifs, or videos.
-
 ## Getting started
 
-List prerequisites and provide or point to information on how to
-start using the package.
+Adding package #
+```dart
+rxdart_bloc : ^1.0.0
+```
+Importing package #
+```dart
+import 'package:rxdart_bloc/rxdart_bloc.dart';
+```
 
 ## Usage
-
 To use this plugin, add rxdart_bloc as a dependency in your pubspec.yaml file.
 
 ## Example
