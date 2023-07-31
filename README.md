@@ -26,7 +26,7 @@ If you are working on a complex project you might be challenged to build a highl
 
 Adding package #
 ```dart
-rxdart_bloc : ^1.0.0
+rxdart_bloc : ^1.0.1
 ```
 Importing package #
 ```dart
