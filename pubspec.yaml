@@ -1,7 +1,7 @@
 name: rxdart_bloc
-description: rxdart_bloc Flutter Package.
+description: A Flutter package for bloc pattern implementation streams/rxdart
 version: 1.0.0
-homepage:
+homepage: https://github.com/MohamedAboGhoneim/rxdart_bloc
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
