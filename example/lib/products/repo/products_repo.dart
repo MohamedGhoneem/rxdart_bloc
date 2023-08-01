@@ -12,7 +12,7 @@ class ProductsRepo implements ProductsRepoInterface {
   Future<BaseModel> getProducts() async {
     try {
       var response =
-          await _network.request(HttpMethod.get, 'productss');
+          await _network.request(HttpMethod.get, 'products');
       return GetAllProductsResponseModel.fromJson(response?.data);
     } catch (e) {
       return ErrorModel.fromJson(e as dynamic);

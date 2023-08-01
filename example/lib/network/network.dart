@@ -68,7 +68,7 @@ class Network {
     } on DioException catch (e) {
       log('$method ===>>> $endpoint ===>>> ${e.message}\n');
 
-      if (e.response?.data == null) {
+      if (e.response?.data == null || e.response?.data is String) {
         throw {
           "status_code": 500,
           "message": e.message,

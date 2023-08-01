@@ -11,29 +11,37 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-If you are working on a complex project you might be challenged to build a highly interactive UI or a heavy business logic in a combination with the consumption of various data sources such as REST APIs, Web Socket, Secured Storage, Shared Preferences, etc. To achieve this, you might need a sophisticated architecture that facilitates your work during product development.
+If you are working on a complex project you might be challenged to build a highly interactive UI or
+a heavy business logic in a combination with the consumption of various data sources such as REST
+APIs, Web Socket, Secured Storage, Shared Preferences, etc. To achieve this, you might need a
+sophisticated architecture that facilitates your work during product development.
 
+## Screenshot
 
-## Screenshot 
-
-<img src="../Screenshot_20230731_093756.png"/>
+<img src="screenshot/Screenshot 2023-08-01 at 9.04.12 AM.png"/><img src="screenshot/Screenshot_20230731_093756.png"/><img src="screenshot/Screenshot_20230801_081726.png"/>
 
 ## Getting started
 
 Adding package #
+
 ```dart
-rxdart_bloc : ^1.0.2+1
+rxdart_bloc: ^
+1.0
+.3
 ```
 
 Importing package #
+
 ```dart
 import 'package:rxdart_bloc/rxdart_bloc.dart';
 ```
 
 ## Usage
+
 To use this plugin, add rxdart_bloc as a dependency in your pubspec.yaml file.
 
 ## Example
+
 Here are an example that show you how to use this plugin.
 
 ```dart
@@ -59,6 +67,7 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
 ```dart
 
 import 'package:flutter/material.dart';
@@ -77,12 +86,14 @@ class ProductsView extends StatefulWidget {
 
 class _ProductsViewState extends State<ProductsView> {
   ProductsBloc bloc = ProductsBloc();
+
   @override
   void initState() {
-    bloc= BlocProvider.of<ProductsBloc>(context);
+    bloc = BlocProvider.of<ProductsBloc>(context);
     bloc.getProducts();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +117,6 @@ class _ProductsViewState extends State<ProductsView> {
           }
       ),
     );
-
   }
 
 }
