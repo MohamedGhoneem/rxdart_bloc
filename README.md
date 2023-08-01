@@ -18,15 +18,16 @@ sophisticated architecture that facilitates your work during product development
 
 ## Screenshot
 
-<img src="https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/success.png"/><img src="https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/error.png"/><img src="https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/arch.png"/>
-(https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/success.gif?raw=true)
-(https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/error.gif?raw=true)
+![](screenshot/success.png) ![](screenshot/error.png) ![](screenshot/arch.png)
+![](screenshot/success.gif) ![](screenshot/error.gif) |
+
+
 ## Getting started
 
 Adding package #
 
-```dart
-rxdart_bloc: ^1.0.6
+```yaml
+rxdart_bloc: ^1.0.6+20
 ```
 
 Importing package #
