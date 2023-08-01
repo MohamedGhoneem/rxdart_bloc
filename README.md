@@ -25,9 +25,7 @@ sophisticated architecture that facilitates your work during product development
 Adding package #
 
 ```dart
-rxdart_bloc: ^
-1.0
-.3
+rxdart_bloc: ^1.0.4
 ```
 
 Importing package #

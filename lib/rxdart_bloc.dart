@@ -4,7 +4,7 @@ export 'bloc_provider.dart';
 export 'empty_list.dart';
 export 'loading_widget.dart';
 export 'request_state.dart';
-export 'rxdart_bloc_State.dart';
+export 'rxdart_bloc_state.dart';
 export 'some_thing_went_wrong_screen.dart';
 export 'streaming_result_widget.dart';
 export 'package:rxdart/rxdart.dart';
