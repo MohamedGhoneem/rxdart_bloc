@@ -10,24 +10,21 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
- 
-Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
 
-## Features
-Why rxdart_bloc ?
 If you are working on a complex project you might be challenged to build a highly interactive UI or a heavy business logic in a combination with the consumption of various data sources such as REST APIs, Web Socket, Secured Storage, Shared Preferences, etc. To achieve this, you might need a sophisticated architecture that facilitates your work during product development.
 
 
+## Screenshot 
 
-![](../Screenshot_20230731_093756.png)
+<img src="../Screenshot_20230731_093756.png"/>
 
 ## Getting started
 
 Adding package #
 ```dart
-rxdart_bloc : ^1.0.1
+rxdart_bloc : ^1.0.2+1
 ```
+
 Importing package #
 ```dart
 import 'package:rxdart_bloc/rxdart_bloc.dart';
@@ -39,6 +36,29 @@ To use this plugin, add rxdart_bloc as a dependency in your pubspec.yaml file.
 ## Example
 Here are an example that show you how to use this plugin.
 
+```dart
+import 'package:flutter/material.dart';
+import 'package:rxdart_bloc/bloc_provider.dart';
+
+import 'products/bloc/products_bloc.dart';
+import 'products/view/products_view.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter rxdart_bloc example',
+      home: BlocProvider(bloc: ProductsBloc(), child: const ProductsView()),
+    );
+  }
+}
+```
 ```dart
 
 import 'package:flutter/material.dart';

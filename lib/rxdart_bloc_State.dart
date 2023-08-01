@@ -12,4 +12,9 @@ import 'base_model.dart';
 
   PublishSubject<E> errorSubject = PublishSubject();
   Stream<E> get errorStream => errorSubject.stream;
+
+  void dispose(){
+   successSubject.close();
+   errorSubject.close();
+  }
 }
