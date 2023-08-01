@@ -18,8 +18,9 @@ sophisticated architecture that facilitates your work during product development
 
 ## Screenshot
 
-<img src="success.png"/><img src="error.png"/><img src="arch.png"/>
-(https://github.com/flutter/plugins/blob/main/packages/video_player/video_player/doc/demo_ipod.gif?raw=true)
+<img src="https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/success.png"/><img src="https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/error.png"/><img src="https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/arch.png"/>
+(https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/success.gif?raw=true)
+(https://github.com/MohamedGhoneem/rxdart_bloc/blob/main/screenshot/error.gif?raw=true)
 ## Getting started
 
 Adding package #
