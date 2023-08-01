@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:rxdart_bloc/rxdart_bloc.dart';
 
@@ -14,38 +13,43 @@ class ProductsView extends StatefulWidget {
 }
 
 class _ProductsViewState extends State<ProductsView> {
-ProductsBloc bloc = ProductsBloc();
+  late ProductsBloc _bloc;
+
   @override
   void initState() {
-    bloc= BlocProvider.of<ProductsBloc>(context);
-    bloc.getProducts();
+    _bloc = BlocProvider.of<ProductsBloc>(context);
+    Future.delayed(const Duration(seconds: 2), () {
+      _bloc.getProducts();
+    });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement getBody
     return Scaffold(
-      appBar: AppBar(title: const Text('Products'),),
-      body: StreamBuilder<GetAllProductsResponseModel>(
-        stream: bloc.successStream,
-        builder: (context, snapshot) {
-          return StreamingResult(
-            subject: bloc.requestStateSubject,
-            successWidget: ListView.builder(
-                      itemCount: snapshot.data?.products?.length,
-                      padding: const EdgeInsets.all(16),
-                      itemBuilder: (context, index) {
-                        return ProductsItemWidget(
-                          content: snapshot.data?.products?[index],
-                        );
-                      }),
-            retry: () =>
-                bloc.getProducts(),
-          );
-        }
+      appBar: AppBar(
+        title: const Text('Products'),
       ),
+      body: StreamBuilder<GetAllProductsResponseModel>(
+          stream: _bloc.successStream,
+          builder: (context, snapshot) {
+            return StreamingResult(
+              subject: _bloc.requestStateSubject,
+              // initWidget: const Center(child: Text('Initial')),
+              successWidget: ListView.builder(
+                  itemCount: snapshot.data?.products?.length,
+                  padding: const EdgeInsets.all(16),
+                  itemBuilder: (context, index) {
+                    return ProductsItemWidget(
+                      content: snapshot.data?.products?[index],
+                    );
+                  }),
+              // emptyWidget: const Center(child: Text('Empty')),
+              // errorWidget: const Center(child: Text('Error')),
+              retry: () => _bloc.getProducts(),
+            );
+          }),
     );
-
   }
-
 }

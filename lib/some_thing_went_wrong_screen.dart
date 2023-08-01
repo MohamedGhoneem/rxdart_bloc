@@ -15,29 +15,31 @@ class SomeThingWentWrongScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return errorWidget ??
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              'Error',
-              style: TextStyle(fontSize: 18, color: Colors.red),
-              textAlign: TextAlign.center,
-              maxLines: 1,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              error ?? 'Some Thing Went Wrong',
-              style: const TextStyle(fontSize: 16, color: Colors.red),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-            GestureDetector(
-              onTap: retry,
-              child: const Text('Refresh'),
-            ),
-          ],
-        );
+    return Center(
+      child: errorWidget ??
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Error',
+                style: TextStyle(fontSize: 18, color: Colors.red),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                error ?? 'Some Thing Went Wrong',
+                style: const TextStyle(fontSize: 16, color: Colors.red),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              GestureDetector(
+                onTap: retry,
+                child: const Text('Refresh'),
+              ),
+            ],
+          ),
+    );
   }
 }

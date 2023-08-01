@@ -11,21 +11,23 @@ import 'some_thing_went_wrong_screen.dart';
 ///
 class StreamingResult extends StatelessWidget {
   final BehaviorSubject<RequestState> subject;
+  final Widget? initWidget;
+  final Widget? loadingWidget;
   final Widget successWidget;
-  final Widget? emptyListWidget;
+  final Widget? emptyWidget;
   final Widget? errorWidget;
   final VoidCallback? retry;
-  final double? loadingHeight;
 
-  const StreamingResult(
-      {Key? key,
-      required this.subject,
-      required this.successWidget,
-      this.emptyListWidget,
-      this.errorWidget,
-      this.retry,
-      this.loadingHeight})
-      : super(key: key);
+  const StreamingResult({
+    Key? key,
+    required this.subject,
+    this.initWidget,
+    this.loadingWidget,
+    required this.successWidget,
+    this.emptyWidget,
+    this.errorWidget,
+    this.retry,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,34 +37,32 @@ class StreamingResult extends StatelessWidget {
           if (snapshot.data == null) return const SizedBox();
           switch (snapshot.data!.status) {
             case RequestStatus.init:
-              return SizedBox(height: loadingHeight, child: const SizedBox());
+              return initWidget ??
+                  Center(
+                    child: Text(snapshot.data!.message),
+                  );
             case RequestStatus.loading:
-              return SizedBox(
-                  height: loadingHeight, child: const LoadingWidget());
+              return loadingWidget ?? const LoadingWidget();
             case RequestStatus.success:
               return successWidget;
             case RequestStatus.error:
-              return Center(
-                  child: errorWidget ??
-                      SomeThingWentWrongScreen(
-                          error: snapshot.data!.message,
-                          retry: retry ?? () {}));
+              return errorWidget ??
+                  SomeThingWentWrongScreen(
+                      error: snapshot.data!.message, retry: retry ?? () {});
             case RequestStatus.empty:
-              return emptyListWidget ??
-                  Center(
-                    child: EmptyList(
-                      message: snapshot.data!.message,
-                    ),
+              return emptyWidget ??
+                  EmptyList(
+                    message: snapshot.data!.message,
                   );
             case RequestStatus.loadMore:
               return Stack(
                 children: [
                   successWidget,
-                  const Positioned(
+                  Positioned(
                     left: 0.0,
                     right: 0.0,
                     bottom: 10.0,
-                    child: LoadingWidget(),
+                    child: loadingWidget ?? const LoadingWidget(),
                   )
                 ],
               );

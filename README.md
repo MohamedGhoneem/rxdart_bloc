@@ -18,14 +18,14 @@ sophisticated architecture that facilitates your work during product development
 
 ## Screenshot
 
-<img src="screenshot/Screenshot 2023-08-01 at 9.04.12 AM.png"/><img src="screenshot/Screenshot_20230731_093756.png"/><img src="screenshot/Screenshot_20230801_081726.png"/>
-
+<img src="success.png"/><img src="error.png"/><img src="arch.png"/>
+(https://github.com/flutter/plugins/blob/main/packages/video_player/video_player/doc/demo_ipod.gif?raw=true)
 ## Getting started
 
 Adding package #
 
 ```dart
-rxdart_bloc: ^1.0.4
+rxdart_bloc: ^1.0.5+1
 ```
 
 Importing package #

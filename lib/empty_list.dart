@@ -15,10 +15,12 @@ class EmptyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(message??'Empty list',
-        style: TextStyle(
-          fontSize: fontSize ?? 14,
-          color: color ?? Theme.of(context).primaryColor,
-        ));
+    return Center(
+      child: Text(message??'Empty list',
+          style: TextStyle(
+            fontSize: fontSize ?? 14,
+            color: color ?? Theme.of(context).primaryColor,
+          )),
+    );
   }
 }

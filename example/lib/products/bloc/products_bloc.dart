@@ -7,11 +7,14 @@ import '../repo/products_repo.dart';
 class ProductsBloc extends BaseBloc
     with RxdartBlocState<GetAllProductsResponseModel, ErrorModel> {
   BehaviorSubject<RequestState> requestStateSubject = BehaviorSubject.seeded(
-      RequestState(status: RequestStatus.loading, message: ''));
+      RequestState(status: RequestStatus.init, message: 'INITIAL'));
   final ProductsRepo _countriesRepo =
       ProductsRepo(Network('https://dummyjson.com/'));
 
   Future getProducts() async {
+    requestStateSubject.sink
+        .add(RequestState(status: RequestStatus.loading, message: 'LOADING'));
+
     var model = await _countriesRepo.getProducts();
     if (model is GetAllProductsResponseModel) {
       super.successSubject.sink.add(model);
