@@ -18,7 +18,7 @@ Adding package #
 
 ```yaml
 
-rxdart_bloc: ^1.0.7+1
+rxdart_bloc: ^1.0.8
 
 ```
 
