@@ -18,8 +18,11 @@ sophisticated architecture that facilitates your work during product development
 
 ## Screenshot
 
-![](screenshot/success.png) ![](screenshot/error.png) ![](screenshot/arch.png)
-![](screenshot/success.gif) ![](screenshot/error.gif) |
+|           SUCCESS           |           ERROR           |           ARCH           |
+|:---------------------------:|:-------------------------:|:------------------------:|
+| ![](screenshot/success.png) | ![](screenshot/error.png) | ![](screenshot/arch.png) |
+| ![](screenshot/success.gif) | ![](screenshot/error.gif) |                          |
+
 
 
 ## Getting started
@@ -27,13 +30,17 @@ sophisticated architecture that facilitates your work during product development
 Adding package #
 
 ```yaml
-rxdart_bloc: ^1.0.6+20
+
+rxdart_bloc: ^1.0.7
+
 ```
 
 Importing package #
 
 ```dart
+
 import 'package:rxdart_bloc/rxdart_bloc.dart';
+
 ```
 
 ## Usage
@@ -44,6 +51,7 @@ To use this plugin, add rxdart_bloc as a dependency in your pubspec.yaml file.
 
 Here are an example that show you how to use this plugin.
 
+## main.dart
 ```dart
 import 'package:flutter/material.dart';
 import 'package:rxdart_bloc/bloc_provider.dart';
@@ -67,7 +75,7 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
-
+## products_view.dart
 ```dart
 
 import 'package:flutter/material.dart';
@@ -122,8 +130,107 @@ class _ProductsViewState extends State<ProductsView> {
 }
 ```
 
-## Additional information
+## products_bloc.dart
+```dart
+import 'package:rxdart_bloc/rxdart_bloc.dart';
+import '../../../network/network.dart';
+import '../../models/error_model.dart';
+import '../model/products_response_model.dart';
+import '../repo/products_repo.dart';
 
-Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+class ProductsBloc extends BaseBloc
+with RxdartBlocState<GetAllProductsResponseModel, ErrorModel> {
+BehaviorSubject<RequestState> requestStateSubject = BehaviorSubject.seeded(
+RequestState(status: RequestStatus.init, message: 'INITIAL'));
+final ProductsRepo _countriesRepo =
+ProductsRepo(Network('https://dummyjson.com/'));
+
+Future getProducts() async {
+requestStateSubject.sink
+.add(RequestState(status: RequestStatus.loading, message: 'LOADING'));
+
+    var model = await _countriesRepo.getProducts();
+    if (model is GetAllProductsResponseModel) {
+      super.successSubject.sink.add(model);
+      requestStateSubject.sink
+          .add(RequestState(status: RequestStatus.success, message: 'SUCCESS'));
+    }
+    if (model is ErrorModel) {
+      super.errorSubject.sink.add(model);
+      requestStateSubject.sink.add(RequestState(
+          status: RequestStatus.error, message: model.message ?? ''));
+    }
+}
+
+@override
+void dispose() {
+requestStateSubject.close();
+}
+}
+```
+## products_repo_interface.dart
+```dart
+import 'package:rxdart_bloc/base_model.dart';
+
+abstract interface class ProductsRepoInterface {
+  Future<BaseModel> getProducts();
+}
+```
+## products_repo.dart
+```dart
+import 'package:rxdart_bloc/base_model.dart';
+import '../../../network/network.dart';
+import '../../models/error_model.dart';
+import '../model/products_response_model.dart';
+import 'products_repo_interface.dart';
+
+class ProductsRepo implements ProductsRepoInterface {
+  final Network _network;
+  ProductsRepo(this._network);
+
+  @override
+  Future<BaseModel> getProducts() async {
+    try {
+      var response =
+          await _network.request(HttpMethod.get, endpoint: 'products');
+      return GetAllProductsResponseModel.fromJson(response?.data);
+    } catch (e) {
+      return ErrorModel.fromJson(e as dynamic);
+    }
+  }
+}
+```
+
+## rxdart_bloc widgets
+
+## BlocProvider
+**BlocProvider** is a Flutter widget which provides a bloc to its children.
+
+```dart
+
+BlocProvider(bloc: ProductsBloc(), child: const ProductsView());
+
+```
+
+## StreamingResult
+**StreamingResult** is a Flutter widget which returns the result of request streaming. you can provide your custom **initWidget, successWidget, emptyWidget, errorWidget, retry function**
+
+```dart
+
+StreamingResult(
+subject: _bloc.requestStateSubject,
+// initWidget: const Center(child: Text('Initial')),
+successWidget: ListView.builder(
+itemCount: snapshot.data?.products?.length,
+padding: const EdgeInsets.all(16),
+itemBuilder: (context, index) {
+return ProductsItemWidget(
+content: snapshot.data?.products?[index],
+);
+}),
+// emptyWidget: const Center(child: Text('Empty')),
+// errorWidget: const Center(child: Text('Error')),
+retry: () => _bloc.getProducts(),
+);
+```
+

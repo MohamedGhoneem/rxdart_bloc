@@ -19,10 +19,9 @@ class Network {
 
   final Dio _dio = Dio();
 
-
   Future<Response?> request(
-    HttpMethod method,
-    String endpoint, {
+    HttpMethod method, {
+    required String endpoint,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? body,
     Map<String, dynamic>? headers,
