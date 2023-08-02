@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rxdart_bloc/rxdart_bloc.dart';
-
 import '../bloc/products_bloc.dart';
 import '../model/products_response_model.dart';
 import 'widget/products_item_widget.dart';
 
+///==========================================================
+/// CREATED BY MOHAMED GHONEIM 01/01/2022 TEL// +201064626369
+///==========================================================
+///
 class ProductsView extends StatefulWidget {
   const ProductsView({Key? key}) : super(key: key);
 
@@ -18,9 +21,7 @@ class _ProductsViewState extends State<ProductsView> {
   @override
   void initState() {
     _bloc = BlocProvider.of<ProductsBloc>(context);
-    Future.delayed(const Duration(seconds: 2), () {
-      _bloc.getProducts();
-    });
+    _bloc.getProducts();
     super.initState();
   }
 

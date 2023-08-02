@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
-import '../request_state.dart';
-import 'empty_list.dart';
-import 'loading_widget.dart';
-import 'some_thing_went_wrong_screen.dart';
+import '../rxdart_bloc.dart';
 
 ///==========================================================
 /// CREATED BY MOHAMED GHONEIM 01/01/2022 TEL// +201064626369

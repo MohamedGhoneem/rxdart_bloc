@@ -6,8 +6,8 @@
 enum RequestStatus{init, loading,success,error,empty,loadMore}
 
 class RequestState {
-   RequestStatus status= RequestStatus.loading;
-   String message='LOADING';
+   RequestStatus status= RequestStatus.init;
+   String message='INITIAL';
 
   RequestState({ required this.status,  required this.message});
 }

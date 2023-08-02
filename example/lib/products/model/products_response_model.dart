@@ -1,5 +1,8 @@
-import 'package:rxdart_bloc/base_model.dart';
-
+import 'package:rxdart_bloc/rxdart_bloc.dart';
+///==========================================================
+/// CREATED BY MOHAMED GHONEIM 01/01/2022 TEL// +201064626369
+///==========================================================
+///
 class GetAllProductsResponseModel
     extends BaseModel<GetAllProductsResponseModel> {
   List<Products>? products;
