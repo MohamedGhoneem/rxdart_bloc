@@ -14,20 +14,18 @@ sophisticated architecture that facilitates your work during product development
 
 ## Getting started
 
-Adding package #
-
-```yaml
-
-rxdart_bloc: ^1.0.8
-
-```
-
-Importing package #
+With `null-safety`
 
 ```dart
+      dependencies:
+        rxdart_bloc: ^1.0.8
+```
+Add the dependency to your project and start using **rxdart_bloc** #
 
+Importing the package #
+
+```dart
 import 'package:rxdart_bloc/rxdart_bloc.dart';
-
 ```
 
 ## Usage
@@ -246,4 +244,15 @@ retry: () => _bloc.getProducts(),
     super.initState();
   }
 ```
+
+## Improve
+
+Help me by reporting bugs, **submit new ideas** for features or anything else that you want to share.
+
+- Just [write an issue](https://github.com/MohamedGhoneem/rxdart_bloc/issues) on GitHub. ✏️
+- And don't forget to hit the **like button** for this package ✌️
+
+## More
+
+Check out my other useful packages on [pub.dev](https://pub.dev/publishers/ghoneem.com/packages)
 
