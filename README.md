@@ -78,7 +78,7 @@ class ProductsView extends StatefulWidget {
 }
 
 class _ProductsViewState extends State<ProductsView> {
-  ProductsBloc bloc = ProductsBloc();
+  late ProductsBloc _bloc;
 
   @override
   void initState() {
