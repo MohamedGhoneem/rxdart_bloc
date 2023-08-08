@@ -17,8 +17,8 @@ sophisticated architecture that facilitates your work during product development
 With `null-safety`
 
 ```dart
-      dependencies:
-        rxdart_bloc: ^1.0.8+1
+  dependencies:
+    rxdart_bloc: ^1.0.9
 ```
 Add the dependency to your project and start using **rxdart_bloc** #
 
@@ -214,19 +214,17 @@ MultiBlocProvider<List<BaseBloc>>(
 ```dart
 
 StreamingResult(
-subject: _bloc.requestStateSubject,
-// initWidget: const Center(child: Text('Initial')),
-successWidget: ListView.builder(
-itemCount: snapshot.data?.products?.length,
-padding: const EdgeInsets.all(16),
-itemBuilder: (context, index) {
-return ProductsItemWidget(
-content: snapshot.data?.products?[index],
-);
-}),
-// emptyWidget: const Center(child: Text('Empty')),
-// errorWidget: const Center(child: Text('Error')),
-retry: () => _bloc.getProducts(),
+  subject: _bloc.requestStateSubject,
+  // initWidget: const Center(child: Text('Initial')),
+  successWidget: ListView.builder(
+    itemCount: snapshot.data?.products?.length,
+    padding: const EdgeInsets.all(16),
+    itemBuilder: (context, index) {
+      return ProductsItemWidget(content: snapshot.data?.products?[index]);
+    }),
+  // emptyWidget: const Center(child: Text('Empty')),
+  // errorWidget: const Center(child: Text('Error')),
+  retry: () => _bloc.getProducts(),
 );
 ```
 ## Declare bloc
