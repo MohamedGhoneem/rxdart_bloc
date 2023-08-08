@@ -18,7 +18,7 @@ With `null-safety`
 
 ```dart
       dependencies:
-        rxdart_bloc: ^1.0.8
+        rxdart_bloc: ^1.0.8+1
 ```
 Add the dependency to your project and start using **rxdart_bloc** #
 
@@ -201,13 +201,12 @@ BlocProvider(bloc: ProductsBloc(), child: const ProductsView());
 **MultiBlocProvider** is a Flutter widget which provides a multi blocs to their children.
 
 ```dart
-
 MultiBlocProvider<List<BaseBloc>>(
-blocs: [
-Bloc1(),
-Bloc2(),
-], child: const ProductsView());
-
+  blocs: [
+      Bloc1(),
+      Bloc2(),
+  ], child: const ProductsView()
+);
 ```
 ## StreamingResult
 **StreamingResult** is a Flutter widget which returns the result of request streaming. you can provide your custom **initWidget, successWidget, emptyWidget, errorWidget, retry function**
