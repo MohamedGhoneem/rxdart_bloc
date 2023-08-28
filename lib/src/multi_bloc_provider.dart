@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../rxdart_bloc.dart';
+
 ///==========================================================
 /// CREATED BY MOHAMED GHONEIM 01/01/2022 TEL// +201064626369
 ///==========================================================
@@ -18,9 +19,11 @@ class MultiBlocProvider<T extends List<BaseBloc>> extends StatefulWidget {
   _MultiBlocProviderState createState() => _MultiBlocProviderState();
 
   static T of<T extends List<BaseBloc>>(BuildContext context) {
-    final provider = context.dependOnInheritedWidgetOfExactType<_InheritedMultiBlocProvider<T>>();
+    final provider = context
+        .dependOnInheritedWidgetOfExactType<_InheritedMultiBlocProvider<T>>();
     if (provider == null) {
-      throw FlutterError('MultiBlocProvider.of() called with a context that does not contain a MultiBlocProvider.');
+      throw FlutterError(
+          'MultiBlocProvider.of() called with a context that does not contain a MultiBlocProvider.');
     }
     return provider.blocs;
   }
@@ -44,7 +47,8 @@ class _MultiBlocProviderState extends State<MultiBlocProvider> {
   }
 }
 
-class _InheritedMultiBlocProvider<T extends List<BaseBloc>> extends InheritedWidget {
+class _InheritedMultiBlocProvider<T extends List<BaseBloc>>
+    extends InheritedWidget {
   final T blocs;
 
   _InheritedMultiBlocProvider({

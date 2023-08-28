@@ -46,8 +46,8 @@ class _ProductsViewState extends State<ProductsView> {
                       content: snapshot.data?.products?[index],
                     );
                   }),
-              // emptyWidget: const Center(child: Text('Empty')),
-              // errorWidget: const Center(child: Text('Error')),
+              emptyWidget: const Center(child: Text('Empty')),
+              errorWidget: const Center(child: Text('Error')),
               retry: () => _bloc.getProducts(),
             );
           }),
