@@ -7,11 +7,11 @@ abstract class BaseModel<T> {
 
   Map<String, dynamic> toJson();
 
-  T? decodingFromJson(String str) {
-    return null;
-  }
-
-  String? encodingToJson() {
-    return null;
-  }
+  // T? decodingFromJson(String str) {
+  //   return null;
+  // }
+  //
+  // String? encodingToJson() {
+  //   return null;
+  // }
 }
