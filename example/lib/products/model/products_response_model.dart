@@ -4,7 +4,7 @@ import 'package:rxdart_bloc/rxdart_bloc.dart';
 ///==========================================================
 ///
 class GetAllProductsResponseModel
-    extends BaseModel<GetAllProductsResponseModel> {
+    implements BaseModel{
   List<Products>? products;
   int? total;
   int? skip;

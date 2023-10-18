@@ -6,7 +6,7 @@ import 'package:rxdart_bloc/rxdart_bloc.dart';
 /// CREATED BY MOHAMED GHONEIM 01/01/2022 TEL// +201064626369
 ///==========================================================
 ///
-class ErrorModel extends BaseModel<ErrorModel> {
+class ErrorModel implements BaseModel {
   int? statusCode;
   String? message;
   Errors? errors;
@@ -19,7 +19,6 @@ class ErrorModel extends BaseModel<ErrorModel> {
     errors = json['errors'] != null ? Errors.fromJson(json['errors']) : null;
   }
 
-  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['status_code'] = statusCode;
@@ -28,23 +27,6 @@ class ErrorModel extends BaseModel<ErrorModel> {
       data['errors'] = errors!.toJson();
     }
     return data;
-  }
-
-  @override
-  ErrorModel fromJson(Map<String, dynamic>? json) {
-    return ErrorModel.fromJson(json!);
-  }
-
-  @override
-  ErrorModel decodingFromJson(String str) {
-    // TODO: implement decodingFromJson
-    return ErrorModel.fromJson(json.decode(str));
-  }
-
-  @override
-  String encodingToJson() {
-    // TODO: implement encodingToJson
-    return json.encode(toJson());
   }
 
   @override

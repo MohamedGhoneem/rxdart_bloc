@@ -18,7 +18,7 @@ With `null-safety`
 
 ```dart
   dependencies:
-    rxdart_bloc: ^1.0.11
+    rxdart_bloc: ^1.0.12
 ```
 Add the dependency to your project and start using **rxdart_bloc** #
 
